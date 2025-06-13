@@ -1,0 +1,754 @@
+
+<!-- saved from url=(0098)https://balance-medical-report-assets.s3.eu-west-1.amazonaws.com/report-2025-05-template-test.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+  <link
+  href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css"
+  rel="stylesheet"/>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&family=DM+Serif+Display:ital@0;1&display=swap');
+    html,
+    body {
+      font-size: 24px;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 500;
+      color: #03445b;
+    }
+
+    b {
+      font-weight: 500;
+    }
+
+    h1,
+    h2,
+    h3 {
+      font-family: 'DM Serif Display', serif;
+      margin: 0;
+    }
+
+    h1 {
+      font-style: normal;
+      font-weight: normal;
+      font-size: 56px;
+      line-height: 120%;
+      letter-spacing: -0.75px;
+    }
+
+    h2 {
+      font-family: 'DM Sans', sans-serif;
+      font-style: normal;
+      font-weight: 500;
+      text-transform: uppercase;
+      font-size: 24px;
+      line-height: 120%;
+      /* identical to box height, or 21px */
+
+      letter-spacing: -0.1px;
+    }
+
+    h3 {
+      font-family: 'DM Sans', sans-serif;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 16px;
+      text-transform: uppercase;
+      line-height: 1.2;
+      letter-spacing: -0.2px;
+    }
+
+    hr {
+      width: 100%;
+      height: 0;
+      border: 0;
+      border-bottom: 1px #03445b44 solid;
+      margin-top: 22px;
+      margin-bottom: 22px;
+    }
+
+    .spacer {
+      margin-bottom: 32px;
+      margin-right: 32px;
+    }
+
+    .container {
+      padding-bottom: 150px;
+      position: relative;
+      height: 100%;
+      max-width: 100%;
+    }
+
+    .page-wrap {
+      min-height: 100%;
+      display: flex;
+      flex-direction: column;
+      padding: 32px 32px 48px;
+      box-sizing: border-box;
+      position: relative;
+    }
+
+    .page-wrap__copyright {
+      position: absolute;
+      bottom: 20px;
+      right: 32px;
+      font-size: 12px;
+      text-align: right;
+    }
+
+    .page-card {
+      background-color: #eee;
+      border-radius: 15px;
+      padding: 32px 48px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .page-card--overview {
+      background-color: #dbf5f3;
+      flex: 4;
+    }
+
+    .page-card--cycle {
+      background-color: #f9edf3;
+      flex: 5;
+    }
+
+    .page-card--survey {
+      background-color: #DCDCF6;
+      flex: 50;
+      page-break-after: avoid;
+    }
+
+    .page-card--symptoms {
+      background-color: #eeeefa;
+      flex: 1;
+    }
+
+    .page-card--notes {
+      background-color: #f4e6dc;
+      flex: 1;
+    }
+
+    .overview-heading {
+      font-weight: 400;
+    }
+
+    .overview-pair {
+      display: flex;
+    }
+
+    .no-periods {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .cycles {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+    }
+
+    .cycle {
+      display: flex;
+      align-items: center;
+    }
+
+    .cycle__month-name {
+      width: 100px;
+    }
+
+    .cycle__chart {
+      position: relative;
+    }
+
+    .cycle__no-data {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #f9edf3bb;
+    }
+
+    .cycle__row {
+      display: flex;
+      align-items: center;
+    }
+
+    .cycle__axis-number {
+      box-sizing: border-box;
+      height: 26px;
+      width: 26px;
+      text-align: center;
+      font-size: 12px;
+      border-right: 2px #03445b44 solid;
+    }
+
+    .cycle__axis-corner {
+      box-sizing: border-box;
+      width: 26px;
+      height: 26px;
+      border: 0 #03445b44 solid;
+      border-width: 2px 2px 0 0;
+    }
+
+    .cycle__axis-date {
+      box-sizing: border-box;
+      height: 26px;
+      width: 26px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      font-size: 12px;
+      border-top: 2px #03445b44 solid;
+    }
+
+    .cycle__dot {
+      margin: 8px;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background-color: #dcdcf5;
+    }
+
+    .cycle__dot--on {
+      background-color: #383bc2;
+    }
+
+    .cycles-legend {
+      display: flex;
+      justify-content: space-around;
+    }
+
+    .cycles-legend__item {
+      display: flex;
+      align-items: flex-end;
+    }
+
+    .cycles-legend__dot {
+      margin: 3px;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background-color: #dcdcf5;
+    }
+
+    .cycles-legend__dot--on {
+      background-color: #383bc2;
+    }
+
+    .cycles-legend__label {
+      margin-left: 5px;
+      font-size: 12px;
+      color: #383bc2;
+    }
+
+    .survey-headings-row {
+      display: flex;
+      padding: 5px 0;
+      border-bottom: 1px #03445b44 solid;
+    }
+
+    .survey-headings-row__heading {
+      font-family: 'DM Sans', sans-serif;
+      font-style: normal;
+      font-weight: 500;
+      text-transform: uppercase;
+      font-size: 18px;
+      letter-spacing: -0.1px;
+      flex: 1;
+    }
+
+    .survey-headings-row__heading--type {
+      flex: 2;
+    }
+
+    .survey-headings-row__heading--physical {
+      color: #383bc2;
+    }
+    .survey-headings-row__heading--psychological {
+      color: #003943;
+    }
+    .survey-headings-row__heading--vasomotor {
+      color: #bf573a;
+    }
+
+    .survey-responses-row {
+      display: flex;
+      align-items: center;
+      padding: 3px 0;
+      border-bottom: 1px #03445b44 solid;
+    }
+
+    .survey-responses-row:nth-child(even) {
+      background: rgba(56, 59, 194, 0.06);
+    }
+
+    .survey-responses-row__question {
+      flex: 2;
+      font-size: 13px;
+      font-weight: 400;
+    }
+
+    .survey-responses-row__month {
+      flex: 1;
+      display: flex;
+    }
+
+    .survey-responses-row__dot {
+      margin-right: 13px;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background-color: #eeeefa;
+    }
+
+    .survey-responses-row--physical .survey-responses-row__dot--on {
+      background-color: #383bc2;
+    }
+    .survey-responses-row--psychological .survey-responses-row__dot--on {
+      background-color: #003943;
+    }
+    .survey-responses-row--vasomotor .survey-responses-row__dot--on {
+      background-color: #bf573a;
+    }
+
+    .survey-legend {
+      display: flex;
+      justify-content: center;
+    }
+
+    .survey-legend__item {
+      width: 170px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .survey-legend__dots {
+      display: flex;
+      height: 26px;
+    }
+
+    .survey-legend__dot {
+      margin: 7px;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background-color: #eeeefa;
+    }
+
+    .survey-legend__dot--on {
+      background-color: #003943;
+    }
+
+    .survey-legend__label {
+      font-size: 14px;
+      font-weight: 400;
+      color: #383bc2;
+    }
+
+    .symptoms {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      border-bottom: 1px #03445b44 solid;
+    }
+
+    .symptoms__type {
+      flex: 2;
+      font-family: 'DM Sans', sans-serif;
+      font-style: normal;
+      font-weight: 500;
+      text-transform: uppercase;
+      font-size: 16px;
+      letter-spacing: -0.1px;
+    }
+
+    .symptoms__type--physical {
+      color: #383bc2;
+    }
+    .symptoms__type--psychological {
+      color: #003943;
+    }
+    .symptoms__type--vasomotor {
+      color: #bf573a;
+    }
+
+    .symptoms__right {
+      flex: 3;
+      display: flex;
+      flex-direction: column;
+      font-size: 15px;
+      font-weight: 400;
+      line-height: 18px;
+    }
+
+    .symptoms__symptom {
+      margin: 5px 0;
+    }
+
+    .notes-line {
+      width: 100%;
+      height: 0;
+      border: 0;
+      border-bottom: 1px #e49c76 solid;
+      margin-top: 34px;
+    }
+
+    .notes-line:first-of-type {
+      margin-top: 22px;
+    }
+
+    .key-symptoms-patient-notes-container {
+      page-break-inside: avoid;
+      page-break-before: auto;
+    }
+
+    @media print {
+      .page-card--survey {
+        page-break-after: avoid;
+      }
+      
+      .key-symptoms-patient-notes-container {
+        page-break-inside: avoid;
+        page-break-before: auto;
+      }
+
+      .key-symptoms-patient-notes-container .row {
+        page-break-inside: avoid;
+      }
+
+      @page {
+        margin: 1cm;
+        size: A4;
+      }
+
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      .page-wrap {
+        margin: 0;
+        padding: 0;
+      }
+
+      .page-card {
+        margin-bottom: 1cm;
+        page-break-inside: avoid;
+      }
+    }
+
+    /* .key-symptoms-patient-notes-container1 {
+      display: none;
+    }
+    
+    .key-symptoms-patient-notes-container2 {
+      display: none;
+    } */
+  </style></head>
+
+  
+
+  
+
+  <body class="vsc-initialized">
+    <!-- Page 1: Overview (General Info & Medication) and Cycle History-->
+    <main role="main">
+      <div class="page-wrap">
+        <div class="container page-card page-card--overview">
+          <div class="row align-items-center">
+            <div class="col-6">
+              <svg width="140" height="34" viewBox="0 0 2368 589" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g clip-path="url(#clip0_844_20)">
+                  <mask id="mask0_844_20" maskUnits="userSpaceOnUse" x="825" y="66" width="200" height="511">
+                    <path d="M964.244 66.0693L977.715 73.3933V528.144C989.188 537.423 1004.9 544.011 1024.86 547.914L1022.62 576.474H829.535L832.527 546.45C848.995 543.04 861.96 536.929 871.442 528.144V167.856C871.442 149.803 868.075 137.469 861.339 130.877C854.606 124.285 842.502 120.51 825.043 119.527L827.291 90.9694C833.767 89.5021 847.237 87.3059 867.702 84.3776C916.089 76.573 948.269 70.4618 964.244 66.0693Z" fill="white"></path>
+                  </mask>
+                  <g mask="url(#mask0_844_20)">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M824.891 576.685H1025.14V66.0156H824.891V576.685Z" fill="#034E64"></path>
+                  </g>
+                  <mask id="mask1_844_20" maskUnits="userSpaceOnUse" x="1340" y="216" width="420" height="361">
+                    <path d="M1600.45 216.189C1634.37 216.189 1661.45 226.199 1681.65 246.214C1701.85 266.238 1711.96 293.812 1711.96 328.961V528.145C1724.42 537.423 1740.39 544.013 1759.86 547.914L1756.86 576.474H1567.53L1569.76 547.914C1584.73 544.986 1596.96 538.398 1606.44 528.145V335.552C1606.44 288.687 1590.97 265.25 1560.04 265.25C1547.06 265.25 1534.46 268.914 1522.25 276.235C1510.01 283.559 1500.41 293.331 1493.43 305.528V528.145C1504.9 536.929 1519.87 543.522 1538.34 547.914L1535.34 576.474H1346L1348.25 546.45C1364.21 543.522 1377.43 537.423 1387.91 528.145V317.244C1387.91 299.668 1384.41 287.586 1377.43 280.997C1370.44 274.404 1358.22 270.63 1340.76 269.647L1343.01 241.086C1417.84 227.424 1460.5 219.118 1470.98 216.189L1484.45 222.782L1490.44 265.25C1518.88 232.553 1555.55 216.189 1600.45 216.189Z" fill="white"></path>
+                  </mask>
+                  <g mask="url(#mask1_844_20)">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M1340.54 576.685H1760.16V216.123H1340.54V576.685Z" fill="#034E64"></path>
+                  </g>
+                  <mask id="mask2_844_20" maskUnits="userSpaceOnUse" x="1730" y="218" width="315" height="364">
+                    <path d="M1907.29 218.385C1945.7 218.385 1977 225.343 2001.2 239.255C2025.4 253.168 2037.5 271.11 2037.5 293.079C2037.5 307.242 2031.89 319.201 2020.66 328.96C2009.44 338.732 1996.83 343.608 1982.87 343.608C1968.89 343.608 1957.05 340.676 1947.33 334.819C1937.59 328.96 1931.23 321.636 1928.24 312.851C1934.23 304.063 1937.21 294.67 1937.21 284.656C1937.21 274.659 1933.72 266.714 1926.74 260.858C1919.75 255.001 1911.02 252.07 1900.54 252.07C1860.63 252.07 1840.68 299.667 1840.68 394.866C1840.68 447.11 1847.28 484.204 1860.51 506.175C1873.71 528.144 1896.05 539.125 1927.49 539.125C1958.92 539.125 1989.11 526.196 2018.04 500.316L2044.98 526.677C2009.06 563.294 1962.66 581.602 1905.79 581.602C1848.91 581.602 1805.5 566.472 1775.57 536.196C1745.63 505.933 1730.66 461.14 1730.66 401.823C1730.66 342.506 1745.74 297.105 1775.93 265.617C1806.11 234.131 1849.9 218.385 1907.29 218.385Z" fill="white"></path>
+                  </mask>
+                  <g mask="url(#mask2_844_20)">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M1730.5 581.653H2045.12V218.035H1730.5V581.653Z" fill="#034E64"></path>
+                  </g>
+                  <mask id="mask3_844_20" maskUnits="userSpaceOnUse" x="2032" y="216" width="336" height="366">
+                    <path d="M2211.21 216.189C2268.33 216.189 2308.62 228.889 2332.08 254.27C2347.8 271.292 2358.92 293.909 2365.44 322.123C2371.41 347.92 2366.29 374.967 2351.69 397.176L2350.78 398.53H2139.75V410.243C2139.75 451.255 2145.73 481.646 2157.7 501.415C2169.67 521.187 2192.12 531.073 2225.06 531.073C2266.26 531.073 2300.24 518.095 2326.98 492.128L2328.33 490.797L2358.27 519.357C2337.81 539.381 2316.47 554.757 2294.27 565.49C2272.07 576.235 2243.01 581.599 2207.09 581.599C2149.21 581.599 2105.69 565.614 2076.5 533.635C2047.31 501.665 2032.71 457.239 2032.71 400.359C2032.71 343.491 2048.18 298.569 2079.12 265.62C2110.05 232.664 2154.08 216.189 2211.21 216.189ZM2210.09 252.07C2165.14 252.07 2141.71 290.357 2139.79 366.906L2139.75 369.237L2265.47 363.378C2265.47 324.325 2261.46 296.007 2253.5 278.432C2245.5 260.858 2231.04 252.07 2210.09 252.07Z" fill="white"></path>
+                  </mask>
+                  <g mask="url(#mask3_844_20)">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M2032.63 581.653H2367.94V216.126H2032.63V581.653Z" fill="#034E64"></path>
+                  </g>
+                  <mask id="mask4_844_20" maskUnits="userSpaceOnUse" x="504" y="218" width="320" height="367">
+                    <path d="M662.807 218.751C770.071 218.751 823.707 257.322 823.707 334.451V531.737C823.707 532.126 823.772 532.505 823.867 532.878V534.622C823.867 559.153 803.543 579.036 778.476 579.036H734.986C732.63 579.036 730.612 577.381 730.204 575.109L724.993 546.042C724.332 542.356 719.771 540.835 716.945 543.359C686.494 570.566 651.481 584.164 611.915 584.164C577.489 584.164 551.04 576.359 532.587 560.727C514.123 545.11 504.898 522.409 504.898 492.626C504.898 427.704 554.033 391.823 652.33 384.979L670.741 383.751C672.667 383.624 674.449 382.43 674.983 380.616C675.324 379.453 675.201 378.117 674.482 376.586C671.472 370.176 661.529 364.638 655.11 362.174C628.115 351.817 591.185 363.447 562.839 354.264L562.591 354.194C553.139 351.998 544.63 347.37 537.079 340.31C526.097 330.059 520.613 317.371 520.613 302.23C520.613 276.362 533.208 255.981 558.409 241.085C583.596 226.202 618.395 218.751 662.807 218.751ZM684.884 250.256C663.493 241.879 634.077 246.468 620.623 266.107C613.36 276.713 611.827 291.049 618.801 302.172C625.772 313.291 638.784 317.531 650.663 321.671C672.937 329.438 696.845 341.199 704.896 364.692C712.098 385.702 703.913 412.467 680.639 419.41L674.725 419.932C657.761 421.46 640.527 424.865 626.875 435.47C590.749 463.534 596.962 540.87 653.452 536.656C676.908 534.905 706.076 518.407 715.035 496.207C720.123 483.603 718.19 468.888 718.18 455.653C718.168 438.984 718.119 422.318 718.245 405.652C718.503 372.502 720.331 339.111 717.406 306.024C715.428 283.69 708.1 259.347 684.884 250.256Z" fill="white"></path>
+                  </mask>
+                  <g mask="url(#mask4_844_20)">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M504.811 584.326H824.114V218.417H504.811V584.326Z" fill="#034E64"></path>
+                  </g>
+                  <mask id="mask5_844_20" maskUnits="userSpaceOnUse" x="1019" y="218" width="320" height="367">
+                    <path d="M1177.55 218.751C1284.81 218.751 1338.45 257.322 1338.45 334.451V531.737C1338.45 532.126 1338.52 532.505 1338.61 532.878V534.622C1338.61 559.153 1318.29 579.036 1293.22 579.036H1249.73C1247.37 579.036 1245.36 577.381 1244.95 575.109L1239.73 546.042C1239.07 542.356 1234.51 540.835 1231.69 543.359C1201.24 570.566 1166.22 584.164 1126.66 584.164C1092.23 584.164 1065.78 576.359 1047.33 560.727C1028.87 545.11 1019.64 522.409 1019.64 492.626C1019.64 427.704 1068.78 391.823 1167.07 384.979L1185.48 383.751C1187.41 383.624 1189.19 382.43 1189.72 380.616C1190.07 379.453 1189.94 378.117 1189.22 376.586C1186.21 370.176 1176.27 364.638 1169.85 362.174C1142.86 351.817 1105.93 363.447 1077.58 354.264L1077.33 354.194C1067.88 351.998 1059.37 347.37 1051.82 340.31C1040.84 330.059 1035.36 317.371 1035.36 302.23C1035.36 276.362 1047.95 255.981 1073.15 241.085C1098.34 226.202 1133.14 218.751 1177.55 218.751ZM1199.63 250.256C1178.23 241.879 1148.82 246.468 1135.37 266.107C1128.1 276.713 1126.57 291.049 1133.54 302.172C1140.52 313.291 1153.53 317.531 1165.41 321.671C1187.68 329.438 1211.59 341.199 1219.64 364.692C1226.84 385.702 1218.66 412.467 1195.38 419.41L1189.47 419.932C1172.5 421.46 1155.27 424.865 1141.62 435.47C1105.49 463.534 1111.7 540.87 1168.19 536.656C1191.65 534.905 1220.82 518.407 1229.78 496.207C1234.87 483.603 1232.94 468.888 1232.92 455.653C1232.91 438.984 1232.86 422.318 1232.99 405.652C1233.25 372.502 1235.07 339.111 1232.15 306.024C1230.17 283.69 1222.84 259.347 1199.63 250.256Z" fill="white"></path>
+                  </mask>
+                  <g mask="url(#mask5_844_20)">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M1019.29 584.326H1338.98V218.417H1019.29V584.326Z" fill="#034E64"></path>
+                  </g>
+                  <path d="M239.075 1.57572C252.22 -0.0240747 262.525 2.20231 275.07 2.34896C333.903 3.02888 412.8 19.5468 451.301 67.6741C480.631 104.323 483.791 162.689 448.155 196.418C429.024 214.536 399.788 223.614 373.724 223.654H304.4C284.256 223.681 261.765 229.04 245.741 241.679C240.168 246.065 227.516 257.277 236.608 264.183C240.688 267.289 256.206 267.462 261.739 267.702L313.732 273.155C370.312 281.101 433.757 300.645 469.859 347.639C490.323 374.275 497.709 406.631 498.989 439.627C499.255 446.333 498.229 448.466 497.829 454.292C495.509 487.981 486.577 520.204 461.487 544.561C434.25 571.011 390.082 585.835 352.394 586.275L328.397 587.489C290.362 585.329 252.646 578.023 219.077 559.052C205.026 551.106 193.014 543.081 180.415 532.949C176.723 529.976 167.324 520.924 163.084 520.71C154.765 520.297 153.486 532.482 152.526 538.281L147.873 564.945C147.246 568.638 146.833 573.557 143.847 576.143C140.914 578.69 136.074 578.263 132.422 578.276H89.7602H67.0964C45.3658 578.17 24.4884 565.611 12.5699 547.614C8.66377 541.694 5.59749 534.442 3.67773 527.616C-0.868363 511.512 1.74464 506.379 1.7713 491.621V228.987V172.994C1.82463 137.239 15.1563 99.2301 37.8734 71.6736C45.6191 62.2881 54.658 54.2358 64.4301 46.9833C100.039 20.52 152.766 8.08157 196.413 3.90876L219.077 2.34896C226.263 2.3223 231.849 2.60226 239.075 1.57572ZM239.075 45.3969C226.863 47.41 214.891 50.9428 204.412 57.742C172.723 78.2594 167.977 120.134 165.631 154.33L164.417 170.328V310.31L165.751 330.308V371.636L164.417 391.633V412.964C164.497 462.931 199.146 493.58 244.407 507.592C284.829 520.084 325.371 506.565 339.022 463.624C342.075 454.039 344.608 437.654 344.381 427.629C343.328 381.261 319.771 345.572 275.07 331.001L220.41 320.842C206.932 316.056 193.56 300.818 188.494 287.646C169.177 237.293 203.653 195.845 248.407 176.22C271.337 166.182 306.08 158.329 320.265 136.999C337.916 110.429 325.584 75.2731 300.4 58.4619C282.216 46.3301 260.445 43.3705 239.075 45.3969Z" fill="#034E64" stroke="#034E64" stroke-width="1.33317"></path>
+                </g>
+                <defs>
+                  <clippath id="clip0_844_20">
+                    <rect width="2368" height="589" fill="white"></rect>
+                  </clippath>
+                </defs>
+              </svg> 
+            </div>
+            <div class="col-6 text-right">
+              <h3>Health report date</h3>
+              <span>*date*</span>
+            </div>
+          </div>
+          <hr>
+
+          <div class="row align-items-center">
+            <div class="col-6">
+              <h1>*name*</h1>
+            </div>
+            <div class="col-6">
+              <div class="d-flex">
+                <span class="flex-grow-1 overview-heading">D.O.B</span>
+                <span class="text-right">*dob*</span>
+              </div>
+              <div class="d-flex">
+                <span class="flex-grow-1 overview-heading">Age</span>
+                <span class="text-right">*age*</span>
+              </div>
+            </div>
+          </div>
+          <hr>
+
+          <div class="row">
+            <div class="col-6">
+              <h2>General Info</h2>
+              <hr>
+
+              *general*
+            </div>
+
+            <div class="col-6">
+              <h2>Medication</h2>
+              <hr>
+
+              *medication*
+            </div>
+          </div>
+        </div>
+        <div class="spacer"></div>
+
+        <div class="container page-card page-card--cycle">
+          <h2>Cycle History</h2>
+          <hr>
+
+          <div class="cycles">*cycles*</div>
+
+          <div class="cycles-legend">
+            <div class="cycles-legend__item">
+              <div>
+                <div class="cycles-legend__dot"></div>
+                <div class="cycles-legend__dot"></div>
+                <div class="cycles-legend__dot"></div>
+                <div class="cycles-legend__dot"></div>
+                <div class="cycles-legend__dot cycles-legend__dot--on"></div>
+              </div>
+              <div class="cycles-legend__label">1 - Spotting</div>
+            </div>
+            <div class="cycles-legend__item">
+              <div>
+                <div class="cycles-legend__dot"></div>
+                <div class="cycles-legend__dot"></div>
+                <div class="cycles-legend__dot"></div>
+                <div class="cycles-legend__dot cycles-legend__dot--on"></div>
+                <div class="cycles-legend__dot cycles-legend__dot--on"></div>
+              </div>
+              <div class="cycles-legend__label">2 - Light Bleeding</div>
+            </div>
+            <div class="cycles-legend__item">
+              <div>
+                <div class="cycles-legend__dot"></div>
+                <div class="cycles-legend__dot"></div>
+                <div class="cycles-legend__dot cycles-legend__dot--on"></div>
+                <div class="cycles-legend__dot cycles-legend__dot--on"></div>
+                <div class="cycles-legend__dot cycles-legend__dot--on"></div>
+              </div>
+              <div class="cycles-legend__label">3 - Medium Bleeding</div>
+            </div>
+            <div class="cycles-legend__item">
+              <div>
+                <div class="cycles-legend__dot"></div>
+                <div class="cycles-legend__dot cycles-legend__dot--on"></div>
+                <div class="cycles-legend__dot cycles-legend__dot--on"></div>
+                <div class="cycles-legend__dot cycles-legend__dot--on"></div>
+                <div class="cycles-legend__dot cycles-legend__dot--on"></div>
+              </div>
+              <div class="cycles-legend__label">4 - Heavy Bleeding</div>
+            </div>
+            <div class="cycles-legend__item">
+              <div>
+                <div class="cycles-legend__dot cycles-legend__dot--on"></div>
+                <div class="cycles-legend__dot cycles-legend__dot--on"></div>
+                <div class="cycles-legend__dot cycles-legend__dot--on"></div>
+                <div class="cycles-legend__dot cycles-legend__dot--on"></div>
+                <div class="cycles-legend__dot cycles-legend__dot--on"></div>
+              </div>
+              <div class="cycles-legend__label">5 - Extra Heavy Bleeding</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="page-wrap__copyright">
+          © Balance App Limited *copyrightYear*
+        </div>
+      </div>
+    </main>
+
+    <!-- Page 2: Survey, Symptoms and Notes-->
+    <main role="main">
+      <div class="page-wrap">
+        <div class="container page-card page-card--survey">
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <h2>Your Logged Symptoms Summary</h2>
+            <div class="survey-legend" style="margin: 0;">
+              <div class="survey-legend__item">
+                <div class="survey-legend__dots">
+                  <div class="survey-legend__dot survey-legend__dot--on"></div>
+                  <div class="survey-legend__dot"></div>
+                  <div class="survey-legend__dot"></div>
+                  <div class="survey-legend__dot"></div>
+                </div>
+                <span class="survey-legend__label">Not at all</span>
+              </div>
+
+              <div class="survey-legend__item">
+                <div class="survey-legend__dots">
+                  <div class="survey-legend__dot survey-legend__dot--on"></div>
+                  <div class="survey-legend__dot survey-legend__dot--on"></div>
+                  <div class="survey-legend__dot"></div>
+                  <div class="survey-legend__dot"></div>
+                </div>
+                <span class="survey-legend__label">A little</span>
+              </div>
+
+              <div class="survey-legend__item">
+                <div class="survey-legend__dots">
+                  <div class="survey-legend__dot survey-legend__dot--on"></div>
+                  <div class="survey-legend__dot survey-legend__dot--on"></div>
+                  <div class="survey-legend__dot survey-legend__dot--on"></div>
+                  <div class="survey-legend__dot"></div>
+                </div>
+                <span class="survey-legend__label">Quite a bit</span>
+              </div>
+
+              <div class="survey-legend__item">
+                <div class="survey-legend__dots">
+                  <div class="survey-legend__dot survey-legend__dot--on"></div>
+                  <div class="survey-legend__dot survey-legend__dot--on"></div>
+                  <div class="survey-legend__dot survey-legend__dot--on"></div>
+                  <div class="survey-legend__dot survey-legend__dot--on"></div>
+                </div>
+                <span class="survey-legend__label">Extremely</span>
+              </div>
+            </div>
+          </div>
+          <hr>
+
+          *survey*
+
+          <div style="flex: 1"></div>
+        </div>
+        <div class="spacer"></div>
+
+        <div class="key-symptoms-patient-notes-container1" style="flex: 18">
+          <div class="container key-symptoms-patient-notes-container">
+            <div class="row">
+              <div class="col-6 page-card page-card--symptoms">
+                <h2>Key Symptoms</h2>
+                <hr style="margin-bottom: 0">
+
+                *symptoms*
+              </div>
+              <div class="spacer"></div>
+              <div class="col-6 page-card page-card--notes">
+                <h2>Patient Notes</h2>
+                <hr>
+
+                <div class="notes-line"></div>
+                <div class="notes-line"></div>
+                <div class="notes-line"></div>
+                <div class="notes-line"></div>
+                <div class="notes-line"></div>
+                <div class="notes-line"></div>
+                <div class="notes-line"></div>
+                <div class="notes-line"></div>
+                <div class="notes-line"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="page-wrap__copyright">
+          © Balance App Limited *copyrightYear*
+        </div>
+      </div>
+    </main>
+
+    <!-- Page 3: only shown when logged symptoms is too long to fit this on page 2 -->
+    <!-- <main role="main" class="key-symptoms-patient-notes-container key-symptoms-patient-notes-container2">
+      <div class="page-wrap">
+      
+        <div class="container" style="flex: 18">
+          <div class="row">
+            <div class="col-6 page-card page-card--symptoms">
+              <h2>Key Symptoms</h2>
+              <hr style="margin-bottom: 0">
+
+              *symptoms*
+            </div>
+            <div class="spacer"></div>
+            <div class="col-6 page-card page-card--notes">
+              <h2>Patient Notes</h2>
+              <hr>
+
+              <div class="notes-line"></div>
+              <div class="notes-line"></div>
+              <div class="notes-line"></div>
+              <div class="notes-line"></div>
+              <div class="notes-line"></div>
+              <div class="notes-line"></div>
+              <div class="notes-line"></div>
+              <div class="notes-line"></div>
+              <div class="notes-line"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="page-wrap__copyright">
+          © Balance App Limited *copyrightYear*
+        </div>
+      </div>
+    </main> -->
+    <style type="text/css">
+      /* styles */
+    </style>
+  
+
+</body></html>
